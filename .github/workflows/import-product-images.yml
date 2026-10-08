@@ -1,0 +1,33 @@
+name: Import product images
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-product-images.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download product image
+        run: |
+          set -e
+          if [ -f assets/product.png ]; then
+            echo "Product image already exists; nothing to do."
+            exit 0
+          fi
+          mkdir -p assets
+          curl -L --fail --retry 3 -o assets/product.png 'https://cdn.othoba.com/images/thumbs/2079530_googeer-purest-himalayan-shilajit-resin-100-pure-600mg-maximum-natural-organic-resin-with-85-trace-m.png'
+          file assets/product.png
+      - name: Commit image into repository
+        run: |
+          set -e
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/product.png
+          git diff --cached --quiet && exit 0
+          git commit -m 'Add Googeer Shilajit product image'
+          git push
