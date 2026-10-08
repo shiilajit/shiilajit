@@ -63,5 +63,5 @@ if(sticky&&orderSection){
  window.addEventListener('scroll',updateSticky,{passive:true});window.addEventListener('resize',updateSticky,{passive:true});window.addEventListener('pageshow',updateSticky);window.addEventListener('hashchange',updateSticky);
  if(window.visualViewport)window.visualViewport.addEventListener('resize',updateSticky,{passive:true});updateSticky();
 }
-document.querySelectorAll('[data-package]').forEach(button=>button.addEventListener('click',()=>{const radio=orderForm?.querySelector('input[name="offer"][value="'+button.dataset.package+'"]');if(radio){radio.checked=true;updateSummary();trackStartCheckout();}}));
+document.querySelectorAll('[data-package]').forEach(button=>button.addEventListener('click',()=>{const selector=orderForm?.querySelector('select[name="offer"]');if(selector){selector.value=button.dataset.package;updateSummary();trackStartCheckout();}}));
 document.querySelectorAll('.faq details').forEach(item=>item.addEventListener('toggle',()=>{if(item.open)document.querySelectorAll('.faq details').forEach(other=>{if(other!==item)other.open=false;});}));
