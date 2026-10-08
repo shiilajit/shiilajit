@@ -108,3 +108,83 @@ p,h1,h2,h3,small,label,button,a{overflow-wrap:anywhere}
  .sticky-order{left:8px;right:8px;bottom:8px}
 }
 @media(prefers-reduced-motion:reduce){.sticky-order{transition:none}}
+
+/* SHILAJIT+ checkout redesign — refined, spacious and mobile-first */
+.checkout-form{display:block;max-width:940px;margin:30px auto 0;padding:0;background:#fffdf8;border:1px solid #d5cbb6;box-shadow:0 22px 65px #3029190b;overflow:hidden}
+.checkout-form:before{content:"SHILAJIT+  /  SECURE ORDER";display:block;background:#22271e;color:#e0cfaa;padding:15px 24px;font:9px 'Playfair Display',Georgia,serif;letter-spacing:2.2px}
+.checkout-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 22px;padding:clamp(20px,4vw,42px)}
+.checkout-step{display:flex;align-items:center;gap:13px;grid-column:1/-1;margin:0 0 14px;padding:0 0 15px;border-bottom:1px solid #e7e1d3}
+.checkout-step>span{display:grid;place-items:center;flex:0 0 36px;height:36px;border:1px solid #c1a36a;color:#8b7448;font:12px 'Playfair Display',Georgia,serif;border-radius:50%}
+.checkout-step>div{display:flex;flex-direction:column;gap:2px}
+.checkout-step>div b{font-size:15px;color:#292d22}
+.checkout-step>div small{font-size:11px;font-weight:400;line-height:1.8;color:#77796e}
+.package-select{grid-column:1/-1;margin:0 0 30px}
+.form-field{margin:0 0 20px;gap:8px;font-size:12px;color:#373a30}
+.form-field input,.form-field textarea,.form-field select{appearance:none;display:block;width:100%;min-width:0;border:1px solid #d9d2c3;border-radius:2px;background:#faf8f2;color:#24271f;font:500 14px Cairo,Arial,sans-serif;padding:14px 15px;line-height:1.8;outline:none;box-shadow:none}
+.form-field select{padding-left:42px;background-image:linear-gradient(45deg,transparent 50%,#927747 50%),linear-gradient(135deg,#927747 50%,transparent 50%);background-position:20px 50%,14px 50%;background-size:6px 6px,6px 6px;background-repeat:no-repeat}
+.form-field input::placeholder,.form-field textarea::placeholder{color:#a09b8e}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:#a68a53;background:#fff;box-shadow:0 0 0 3px #c1a36a20}
+.checkout-fields>.form-field:nth-of-type(4){grid-column:1/-1}
+.order-summary{grid-column:1/-1;grid-template-columns:1fr auto;gap:8px 15px;background:#f4f0e6;border:1px solid #e2dac9;padding:17px 19px;margin:6px 0 18px}
+.order-summary span{font-size:10px;letter-spacing:.6px;text-transform:uppercase}
+.order-summary strong{font-size:13px;line-height:1.8}.order-summary b{font:600 25px 'Playfair Display',Georgia,serif;color:#76613c}
+.submit{grid-column:1/-1;min-height:60px;padding:17px 21px;background:#252a20;color:#fff9eb;font-size:14px;letter-spacing:.1px;transition:background .2s,transform .2s}
+.submit:hover{background:#414735}.submit:active{transform:translateY(1px)}
+.form-assurance,.form-message{grid-column:1/-1;text-align:center;margin-top:12px}
+.checkout-steps{display:flex;align-items:center;gap:12px;max-width:650px;margin:25px 0 24px;color:#7b7a6c;font-size:10px}
+.checkout-steps span{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.checkout-steps b{display:grid;place-items:center;width:26px;height:26px;border:1px solid #c9bea4;border-radius:50%;font:10px 'Playfair Display',serif}
+.checkout-steps .active{color:#5b6348}.checkout-steps .active b{background:#252a20;border-color:#252a20;color:#f7efd9}
+.checkout-steps i{height:1px;background:#d5cbb6;flex:1;min-width:8px}
+.trust-row{gap:8px;margin:0 0 20px}
+.trust-row span{background:transparent;border:1px solid #d7cfbd;padding:7px 10px}
+.success{padding:42px 20px}
+.success h2{font-family:Cairo,Arial,sans-serif;font-size:28px;line-height:1.6}
+.success p{font-family:Cairo,Arial,sans-serif}
+@media(max-width:760px){
+ .hero{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:34px 0 52px;min-height:0}
+ .hero-copy{padding:0 6%;max-width:none}
+ .hero h1{font-size:clamp(34px,9vw,47px);line-height:1.5;margin-bottom:16px}
+ .hero-lead{font-size:13px;line-height:2.1}
+ .hero-art{width:100%;max-width:none;justify-self:stretch;padding:0 0 25px;margin:0}
+ .hero-image-frame{height:84svh;min-height:500px;max-height:780px;width:100%;background:#e5dfd0;border:1px solid #c8b78f;outline:1px solid #d7cbb1;outline-offset:-8px}
+ .hero-image-frame img{object-fit:contain;object-position:center;padding:12px}
+ .hero-image-frame:after{inset:16px;border:1px solid #bda87999}
+ .image-caption{padding:12px 6% 0;font-size:8px}
+ .round-stamp{left:18px;top:22px;width:76px;height:76px;font-size:7px}
+ .hero-index{right:6%;bottom:12px}
+ .section-pad{padding:48px 5%}
+ .story-grid,.section-heading,.ritual{grid-template-columns:minmax(0,1fr);gap:20px}
+ .story-image,.gallery-main,.gallery-side,.ritual-photo{height:auto;min-height:0;aspect-ratio:4/5}
+ .detail-gallery{grid-template-columns:minmax(0,1fr);gap:15px}
+ .gallery-side{margin-top:0!important}
+ .story-image,.detail-gallery figure,.ritual-photo{border:1px solid #c8b78f;outline:1px solid #d7cbb1;outline-offset:-7px}
+ .story-image img,.detail-gallery figure img,.ritual-photo img{object-fit:contain;object-position:center;padding:10px;background:#e5dfd0}
+ .offer-grid{gap:14px}
+ .offer-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px 12px;padding:13px}
+ .offer-image{height:auto;aspect-ratio:3/4;min-height:0;margin:10px 0 0;border:1px solid #c8b78f;outline:1px solid #d7cbb1;outline-offset:-6px}
+ .offer-image img{object-fit:contain;padding:7px;background:#e5dfd0}
+ .checkout-steps{gap:7px;margin:20px 0 22px}
+ .checkout-steps span{font-size:9px;gap:5px}.checkout-steps b{width:23px;height:23px;flex:0 0 23px}
+ .checkout-form{margin-top:18px;border-radius:2px}
+ .checkout-form:before{padding:13px 17px}
+ .checkout-fields{grid-template-columns:minmax(0,1fr);padding:22px 17px;gap:0}
+ .checkout-step,.package-select,.order-summary,.submit,.form-assurance,.form-message,.checkout-fields>.form-field:nth-of-type(4){grid-column:1}
+ .checkout-step{margin-bottom:14px;padding-bottom:13px}
+ .package-select{margin-bottom:25px}
+ .form-field{margin-bottom:17px}
+ .form-field input,.form-field textarea,.form-field select{font-size:16px;padding:14px 13px}
+ .order-summary{margin-top:8px;padding:15px}
+ .order-summary b{font-size:23px}
+ .submit{font-size:13px;line-height:1.9;padding:15px;min-height:60px}
+ .form-assurance{font-size:10px}
+ .sticky-order{bottom:8px;left:8px;right:8px}
+}
+@media(max-width:390px){
+ .hero-image-frame{height:82svh;min-height:480px}
+ .hero-copy .eyebrow{font-size:8px;letter-spacing:2px}
+ .checkout-steps{gap:5px}.checkout-steps span{font-size:8px}.checkout-steps b{width:21px;height:21px;flex-basis:21px}
+ .offer-card{grid-template-columns:minmax(0,1fr)}
+ .offer-image,.offer-card h3,.offer-quantity,.offer-price,.offer-duration,.offer-button{grid-column:1}
+ .offer-image{grid-row:auto;aspect-ratio:4/5}
+}
