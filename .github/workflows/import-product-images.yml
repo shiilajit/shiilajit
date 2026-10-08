@@ -15,19 +15,23 @@ jobs:
       - name: Download product image
         run: |
           set -e
-          if [ -f assets/product.png ]; then
+          if [ -f assets/product.webp ]; then
             echo "Product image already exists; nothing to do."
             exit 0
           fi
           mkdir -p assets
-          curl -L --fail --retry 3 -o assets/product.png 'https://cdn.othoba.com/images/thumbs/2079530_googeer-purest-himalayan-shilajit-resin-100-pure-600mg-maximum-natural-organic-resin-with-85-trace-m.png'
-          file assets/product.png
+          if [ -f assets/product.png ]; then
+            mv assets/product.png assets/product.webp
+          else
+            curl -L --fail --retry 3 -o assets/product.webp 'https://cdn.othoba.com/images/thumbs/2079530_googeer-purest-himalayan-shilajit-resin-100-pure-600mg-maximum-natural-organic-resin-with-85-trace-m.png'
+          fi
+          file assets/product.webp
       - name: Commit image into repository
         run: |
           set -e
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/product.png
+          git add -A assets
           git diff --cached --quiet && exit 0
           git commit -m 'Add Googeer Shilajit product image'
           git pull --rebase origin main
