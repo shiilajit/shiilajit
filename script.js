@@ -10,6 +10,27 @@ const CONFIG = {
   SNAP_PIXEL_ID: "233915bf-25f6-4119-9362-701fe3212185"
 };
 
+// Initialiser le Snap Pixel existant pour conserver la mesure des visites et contacts.
+(function initSnapPixel() {
+  if (!CONFIG.SNAP_PIXEL_ID) return;
+  try {
+    (function (e, t, n) {
+      if (e.snaptr) return;
+      const a = e.snaptr = function () {
+        a.handleRequest ? a.handleRequest.apply(a, arguments) : a.queue.push(arguments);
+      };
+      a.queue = [];
+      const r = t.createElement("script");
+      r.async = true;
+      r.src = n;
+      const s = t.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(r, s);
+    })(window, document, "https://sc-static.net/scevent.min.js");
+    window.snaptr("init", CONFIG.SNAP_PIXEL_ID);
+    window.snaptr("track", "PAGE_VIEW", { item_category: "dietary_supplement" });
+  } catch (_) {}
+})();
+
 const priceElement = document.getElementById("display-price");
 if (priceElement) {
   if (Number.isFinite(CONFIG.PRODUCT_PRICE_MAD) && CONFIG.PRODUCT_PRICE_MAD > 0) {
@@ -58,8 +79,7 @@ document.querySelectorAll(".js-order").forEach((link) => {
     event.preventDefault();
     const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(buildWhatsAppMessage());
     trackContact();
-    const opened = window.open(url, "_blank", "noopener,noreferrer");
-    if (!opened) window.location.href = url;
+    window.open(url, "_blank");
     if (feedback) feedback.textContent = "تم تجهيز رسالة الطلب. أرسلها عبر واتساب لتأكيد السعر والتوفر.";
   });
 });
