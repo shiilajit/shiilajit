@@ -12,7 +12,7 @@ const CONFIG = {
 function trackEvent(name,data){try{if(typeof window.snaptr!=='function')return false;window.snaptr('track',name,data);return true;}catch(_){return false;}}
 (function initSnapPixel(){if(!CONFIG.snapPixelId)return;try{(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var r=t.createElement('script');r.async=true;r.src=n;var u=t.getElementsByTagName('script')[0];u.parentNode.insertBefore(r,u);})(window,document,'https://sc-static.net/scevent.min.js');window.snaptr('init',CONFIG.snapPixelId);trackEvent('PAGE_VIEW',{item_ids:[CONFIG.sku]});}catch(_){} })();
 const orderForm=document.getElementById('order-form');
-const orderSection=document.getElementById('order');
+const orderSection=document.getElementById('order-form');
 let checkoutTracked=false,orderSubmitting=false,orderSubmitted=false,pendingOrder=null;
 function selectedOffer(values){const code=Number(values.get('offer'));return Number.isInteger(code)&&code>=1&&code<=CONFIG.offers.length?{code,...CONFIG.offers[code-1]}:null;}
 function normalizeSaudiPhone(value){
