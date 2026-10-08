@@ -65,6 +65,7 @@
 <div class="section-kicker">04 / ORDER YOUR SHILAJIT+</div><p class="eyebrow">THE SHILAJIT+ COLLECTION</p>
 <h2 class="offers-title">خطوتك التالية، <em>بكل سهولة.</em></h2>
 <p class="offers-intro">اختر الباقة، أدخل بيانات التوصيل، ثم أرسل طلبك. الدفع عند الاستلام.</p>
+<div class="checkout-steps" aria-label="خطوات الطلب"><span class="active"><b>01</b> اختر الباقة</span><i></i><span><b>02</b> بيانات التوصيل</span><i></i><span><b>03</b> تأكيد الطلب</span></div>
 <div class="trust-row" aria-label="مزايا الطلب"><span>✓ الدفع عند الاستلام</span><span>✓ نموذج مختصر وواضح</span><span>✓ مراجعة البيانات قبل الإرسال</span></div>
 <div class="offer-grid" id="offers">
 <article class="offer-card"><div class="offer-top"><span>01 / STARTER</span><span class="offer-tag">للتجربة</span></div><div class="offer-image"><img src="ChatGPT%20Image%20Oct%208,%202026%20at%2007_33_08%20PM%20(5).png" alt="عبوة SHILAJIT+ الفردية" loading="lazy"></div><h3>العبوة الفردية</h3><p class="offer-quantity">عبوة واحدة · 100 غرام</p><div class="offer-price"><strong>198</strong><span>ريال سعودي</span></div><p class="offer-duration">اختيار مناسب للبدء والتعرّف على المنتج.</p><a class="offer-button" href="#order-form" data-package="1">اختيار هذه الباقة <span>↙</span></a></article>
@@ -72,12 +73,10 @@
 <article class="offer-card"><div class="offer-top"><span>03 / TRIPLE SET</span><span class="offer-tag">أوفر للعبوة</span></div><div class="offer-image"><img src="ChatGPT%20Image%20Oct%208,%202026%20at%2007_33_08%20PM%20(7).png" alt="باقة ثلاث عبوات من SHILAJIT+" loading="lazy"></div><h3>باقة التوفير</h3><p class="offer-quantity">3 عبوات · 300 غرام إجمالًا</p><div class="offer-price"><strong>324</strong><span>ريال سعودي</span></div><p class="offer-duration">ثلاث عبوات مع توضيح الوزن الإجمالي والسعر قبل الطلب.</p><a class="offer-button" href="#order-form" data-package="3">اختيار هذه الباقة <span>↙</span></a></article>
 </div>
 <form id="order-form" class="checkout-form">
-<fieldset class="offers" aria-describedby="offer-help"><legend>1. اختر الباقة المناسبة</legend><p id="offer-help" class="field-help">السعر الإجمالي موضح لكل باقة — اختر باقة واحدة فقط.</p>
-<label class="offer"><input type="radio" name="offer" value="1" checked><span class="offer-details"><b>العبوة الفردية</b><small>عبوة واحدة · 100 غرام</small></span><span class="offer-price"><strong>198</strong><small>ريال سعودي</small></span></label>
-<label class="offer"><input type="radio" name="offer" value="2"><span class="offer-details"><b>الباقة الثنائية</b><small>عبوتان · 200 غرام إجمالًا</small></span><span class="offer-price"><strong>288</strong><small>ريال سعودي</small></span></label>
-<label class="offer featured"><input type="radio" name="offer" value="3"><span class="recommended">قيمة أفضل</span><span class="offer-details"><b>باقة التوفير</b><small>3 عبوات · 300 غرام إجمالًا</small></span><span class="offer-price"><strong>324</strong><small>ريال سعودي</small></span></label>
-</fieldset>
-<div class="checkout-fields"><div class="checkout-step">2. بيانات التوصيل</div>
+<div class="checkout-fields">
+<div class="checkout-step"><span>01</span><div><b>مراجعة الباقة</b><small>اختر العرض المناسب قبل المتابعة</small></div></div>
+<label class="form-field package-select"><span>الباقة المطلوبة</span><select name="offer" id="checkout-package"><option value="1">العبوة الفردية · 100 غرام — 198 ر.س</option><option value="2">الباقة الثنائية · 200 غرام — 288 ر.س</option><option value="3">باقة التوفير · 300 غرام — 324 ر.س</option></select></label>
+<div class="checkout-step"><span>02</span><div><b>بيانات التوصيل</b><small>أدخل بياناتك بدقة لتسهيل تأكيد الطلب</small></div></div>
 <label class="form-field"><span>الاسم الكامل</span><input name="name" autocomplete="name" placeholder="اكتب اسمك الكامل" required minlength="2"></label>
 <label class="form-field"><span>رقم الجوال السعودي</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx" required><small>مثال: 05xxxxxxxx أو +9665xxxxxxxx</small></label>
 <label class="form-field"><span>المدينة والحي والعنوان</span><textarea name="address" autocomplete="street-address" placeholder="المدينة، الحي، الشارع، وأقرب علامة" rows="3" required></textarea></label>
