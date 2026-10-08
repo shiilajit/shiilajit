@@ -33,3 +33,78 @@
 .order-note{font-size:10px;color:#77796e;line-height:1.9;margin:15px 0 0}
 @media(max-width:760px){.hero-image-frame{height:min(120vw,540px)}.hero-facts{gap:13px}.hero-facts b{font-size:13px}.offer-grid{grid-template-columns:1fr;gap:14px}.offer-card{display:grid;grid-template-columns:1fr 1fr;column-gap:15px;padding:14px}.offer-top{grid-column:1/-1}.offer-image{grid-column:1;grid-row:2/6;height:220px;margin:12px 0 0}.offer-card h3,.offer-quantity,.offer-price,.offer-duration,.offer-button{grid-column:2}.offer-card h3{align-self:end;margin-top:12px;font-size:16px}.offer-quantity{margin-bottom:6px}.offer-price strong{font-size:34px}.offer-duration{min-height:0;margin:6px 0 12px}.offer-button{padding:11px;font-size:10px}.offer-featured{transform:none}.offers-intro{font-size:12px}}
 @media(max-width:390px){.offer-card{grid-template-columns:1fr}.offer-image,.offer-card h3,.offer-quantity,.offer-price,.offer-duration,.offer-button{grid-column:1}.offer-image{grid-row:auto;height:230px}.offer-card h3{margin-top:5px}.offer-top{grid-column:1}}
+
+/* Mobile refinement: readable Arabic copy, stable card layout and checkout */
+html{scroll-padding-top:82px}
+p,h1,h2,h3,small,label,button,a{overflow-wrap:anywhere}
+.hero-copy,.story-copy,.section-heading,.ritual-copy,.offer-card,.checkout-form{min-width:0}
+.story-copy p,.section-heading>p,.ritual-copy>p:not(.eyebrow),.principles p,.ritual-steps small,.faq details p{line-height:2;max-width:100%}
+.checkout-form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;background:var(--white);border:1px solid var(--line);padding:clamp(16px,3vw,30px);margin-top:24px}
+.checkout-form fieldset{min-width:0;border:0;margin:0;padding:0}
+.checkout-form legend,.checkout-step{font-size:16px;font-weight:800;margin-bottom:6px}
+.field-help{font-size:12px;color:var(--muted);margin:0 0 14px;line-height:1.9}
+.checkout-form .offer{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;border:1px solid var(--line);padding:15px 12px;margin:10px 0;background:#fffdf8;cursor:pointer;border-radius:3px}
+.checkout-form .offer:has(input:checked){border-color:#9c824f;background:#f5f0e4;box-shadow:0 0 0 1px #9c824f inset}
+.checkout-form .offer input{width:18px;height:18px;accent-color:#6a704f;margin:0}
+.offer-details{display:flex;flex-direction:column;gap:4px;min-width:0}
+.offer-details b{font-size:14px}.offer-details small{font-size:11px;line-height:1.7;color:var(--muted)}
+.checkout-form .offer-price{display:flex;flex-direction:column;align-items:flex-end;gap:0;border:0;padding:0;white-space:nowrap}
+.checkout-form .offer-price strong{font:600 27px 'Playfair Display',Georgia,serif;color:var(--ink)}
+.checkout-form .offer-price small{font-size:10px;color:var(--muted)}
+.recommended{position:absolute;top:-9px;left:10px;background:var(--deep);color:#fff6e4;padding:2px 8px;font-size:10px}
+.checkout-fields{min-width:0;padding:4px 0}
+.form-field{display:flex;flex-direction:column;gap:7px;margin:14px 0;font-size:12px;font-weight:700}
+.form-field input,.form-field textarea{display:block;width:100%;min-width:0;border:1px solid #d5cfbf;border-radius:3px;background:#fffdf8;color:var(--ink);font:500 14px Cairo,Arial,sans-serif;padding:13px 14px;outline:none;line-height:1.7}
+.form-field textarea{resize:vertical;min-height:94px}
+.form-field input:focus,.form-field textarea:focus{border-color:#9c824f;box-shadow:0 0 0 3px #c1a36a25}
+.form-field input[aria-invalid=true],.form-field textarea[aria-invalid=true]{border-color:#a33d35}
+.form-field small{font-weight:400;color:var(--muted);font-size:10px}
+.order-summary{display:grid;grid-template-columns:1fr auto;gap:5px 12px;background:#f1ede3;border:1px solid var(--line);padding:13px 15px;margin:20px 0}
+.order-summary span{grid-column:1/-1;font-size:10px;color:var(--muted)}
+.order-summary strong{font-size:12px}.order-summary b{font-size:15px;color:#76613c;white-space:nowrap}
+.submit{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;border:0;background:var(--deep);color:#fff7e7;padding:16px 18px;font:700 13px Cairo,Arial,sans-serif;cursor:pointer;min-height:54px}
+.submit span{font-size:18px;color:var(--gold-light)}.submit:disabled{opacity:.65;cursor:wait}
+.form-assurance,.form-message{font-size:11px;line-height:1.9;color:var(--muted);margin:10px 0 0}
+.form-message{color:#8d342e;font-weight:700}.form-message:empty{display:none}
+.success{text-align:center;padding:35px 12px;grid-column:1/-1}
+.success>span{display:grid;place-items:center;margin:0 auto 12px;width:52px;height:52px;border-radius:50%;background:#e7eadf;color:#4f6741;font-size:25px}
+.success h2{font-size:30px;margin:0 0 8px}.success p{font-size:13px;line-height:2;color:var(--muted)}
+.trust-row{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;color:#626456;font-size:11px}
+.trust-row span{background:#e4dfd1;padding:8px 11px;border-radius:2px}
+.sticky-order{position:fixed;z-index:50;bottom:12px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:#22271ef5;color:#fff8e9;text-decoration:none;box-shadow:0 8px 28px #1113;border:1px solid #c1a36a66;backdrop-filter:blur(12px);transition:opacity .2s,transform .2s}
+.sticky-order>span{font-size:12px;font-weight:700}.sticky-order>strong{font-size:11px;white-space:nowrap;color:#e0cfaa}.sticky-order>strong span{font-size:17px;padding-right:5px}
+.sticky-order.is-hidden{opacity:0;pointer-events:none;transform:translateY(130%)}
+@media(max-width:760px){
+ .site-header{gap:10px}.header-cta{padding:8px 10px}
+ .hero{overflow:clip}.hero h1{font-size:clamp(35px,9.7vw,50px);letter-spacing:-.6px;line-height:1.4;word-break:normal}
+ .hero-lead{font-size:14px;line-height:2.05}.hero-facts{align-items:flex-start;gap:12px}
+ .hero-facts span{min-width:0;flex:1}.hero-facts small{line-height:1.7}.hero-notes{gap:10px;line-height:1.8}
+ .section-pad{padding:54px 5%}
+ .story h2,.section-heading h2,.ritual h2,.order h2,.faq h2{font-size:clamp(34px,9vw,43px);line-height:1.45;letter-spacing:-.3px}
+ .story-grid,.section-heading,.ritual{gap:18px}
+ .story-copy,.section-heading>p,.ritual-copy>p:not(.eyebrow){font-size:13px;line-height:2.05}
+ .story-image{height:auto;aspect-ratio:4/3}.gallery-main,.gallery-side{height:auto;aspect-ratio:4/3}.ritual-photo{height:auto;aspect-ratio:4/5}
+ .principles article{gap:12px}.principles h3{font-size:14px;line-height:1.8}.principles p{font-size:12px}
+ .ritual-steps small{font-size:11px;line-height:1.9}.quote-section p{font-size:clamp(23px,6.3vw,29px);line-height:1.9}
+ .offers-intro{font-size:13px;line-height:2}.offer-grid{grid-template-columns:1fr}
+ .offer-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 13px;padding:14px}
+ .offer-top{grid-column:1/-1}.offer-image{grid-column:1;grid-row:2/7;height:auto;aspect-ratio:3/4;margin:8px 0 0}
+ .offer-card h3,.offer-quantity,.offer-card .offer-price,.offer-duration,.offer-button{grid-column:2;min-width:0}
+ .offer-card h3{font-size:15px;line-height:1.7;align-self:end;margin:10px 0 0}.offer-quantity{font-size:11px;line-height:1.8;margin:0}
+ .offer-card .offer-price strong{font-size:clamp(26px,7vw,34px)}.offer-duration{font-size:11px;line-height:1.9;min-height:0;margin:3px 0 8px}
+ .offer-button{font-size:11px;line-height:1.7;padding:11px}.offer-featured{transform:none}
+ .checkout-form{grid-template-columns:1fr;gap:22px;padding:15px}
+ .checkout-form .offer{grid-template-columns:auto minmax(0,1fr) auto;gap:10px;padding:14px 10px}
+ .checkout-form .offer-details b{font-size:13px}.checkout-form .offer-details small{font-size:10px}
+ .checkout-form .offer-price strong{font-size:26px}.checkout-form legend,.checkout-step{font-size:15px}
+ .form-field input,.form-field textarea{font-size:16px}.trust-row{font-size:10px;gap:7px}.trust-row span{padding:7px 8px}
+ .faq summary{font-size:13px;line-height:1.9}.faq details p{font-size:12px}footer{padding-bottom:85px}
+}
+@media(max-width:390px){
+ .offer-card{grid-template-columns:1fr}.offer-image,.offer-card h3,.offer-quantity,.offer-card .offer-price,.offer-duration,.offer-button{grid-column:1}
+ .offer-image{grid-row:auto;aspect-ratio:5/3;height:auto}.offer-card h3{margin-top:2px}
+ .checkout-form .offer{grid-template-columns:auto minmax(0,1fr) auto}.checkout-form .offer-price strong{font-size:24px}
+ .hero-actions{align-items:stretch}.hero-actions .btn{justify-content:space-between}
+ .sticky-order{left:8px;right:8px;bottom:8px}
+}
+@media(prefers-reduced-motion:reduce){.sticky-order{transition:none}}
