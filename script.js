@@ -78,7 +78,6 @@ form?.addEventListener("submit", async event => {
   status.textContent = "";
   if (phoneError) phoneError.textContent = "";
   const name = String(form.elements.name.value || "").trim();
-  const city = String(form.elements.city.value || "").trim();
   const phone = normalizeSaudiPhone(form.elements.phone.value);
   if (name.length < 2) {
     status.textContent = "يرجى كتابة الاسم.";
@@ -91,11 +90,6 @@ form?.addEventListener("submit", async event => {
     form.elements.phone.focus();
     return;
   }
-  if (city.length < 2) {
-    status.textContent = "يرجى كتابة المدينة.";
-    form.elements.city.focus();
-    return;
-  }
   const offer = currentOffer();
   if (!CONFIG.ORDER_ENDPOINT) {
     status.className = "form-status error";
@@ -105,7 +99,7 @@ form?.addEventListener("submit", async event => {
   const payload = {
     product: CONFIG.PRODUCT_NAME,
     weight: CONFIG.PRODUCT_WEIGHT,
-    name, phone, city,
+    name, phone,
     offer_code: offer.code,
     offer: offer.label,
     quantity: offer.code,
