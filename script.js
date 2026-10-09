@@ -1,27 +1,151 @@
-/* إعدادات الطلب — يجب ضبط السعر ورابط استقبال الطلبات قبل الإطلاق */ 
+/* Shilajit checkout: simplified XCORE-style flow. Set a dedicated order endpoint before accepting live orders. */
 const CONFIG = {
   PRODUCT_NAME: "Googeer Himalayan Shilajit",
   PRODUCT_WEIGHT: "100 غرام",
-  PRODUCT_PRICE_SAR: 198,
-  OFFERS: { 1: 198, 2: 288, 3: 324 },
-  // ضع رابط endpoint آمن يستقبل طلبات checkout (مثل Google Apps Script Web App أو backend متجرك).
-  // لا تضع أسرارًا أو مفاتيح خاصة في هذا الملف العام.
+  OFFERS: {
+    1: { label: "عبوة واحدة · 100 غرام", price: 198 },
+    2: { label: "عبوتان · 200 غرام", price: 288 },
+    3: { label: "3 عبوات · 300 غرام", price: 324 }
+  },
   ORDER_ENDPOINT: "",
   SNAP_PIXEL_ID: "233915bf-25f6-4119-9362-701fe3212185"
 };
-(function initPixel(){if(!CONFIG.SNAP_PIXEL_ID)return;try{(function(e,t,n){if(e.snaptr)return;const a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];const r=t.createElement("script");r.async=true;r.src=n;const s=t.getElementsByTagName("script")[0];s.parentNode.insertBefore(r,s)})(window,document,"https://sc-static.net/scevent.min.js");window.snaptr("init",CONFIG.SNAP_PIXEL_ID);window.snaptr("track","PAGE_VIEW",{item_category:"dietary_supplement"});}catch(_){} })();
-const money = value => Number.isFinite(value)&&value>0 ? new Intl.NumberFormat("ar-SA",{style:"currency",currency:"SAR",maximumFractionDigits:2}).format(value) : "يُؤكَّد السعر قبل الطلب";
-const unit=document.getElementById("unit-price"),total=document.getElementById("summary-total"),mobile=document.getElementById("mobile-price"),qty=document.getElementById("quantity"),summaryQty=document.getElementById("summary-qty");
-function updateTotals(){const q=Number(qty?.value||1),packPrice=CONFIG.OFFERS[q];if(unit)unit.textContent=money(packPrice);if(total)total.textContent=money(packPrice);if(mobile)mobile.textContent=money(packPrice);if(summaryQty)summaryQty.textContent=String(q);}
-qty?.addEventListener("change",updateTotals);document.querySelectorAll("[data-package]").forEach(card=>card.addEventListener("click",()=>{if(qty){qty.value=card.dataset.package;updateTotals();}}));updateTotals();
-const form=document.getElementById("order-form"),status=document.getElementById("form-status");
-const submitButton=form?.querySelector('button[type="submit"]');
-const checkoutReady=Boolean(CONFIG.ORDER_ENDPOINT && Number.isFinite(CONFIG.PRODUCT_PRICE_SAR) && CONFIG.PRODUCT_PRICE_SAR>0);
-if(!checkoutReady && submitButton && status){
-  submitButton.disabled=true;
-  submitButton.textContent="الطلب غير متاح مؤقتًا";
-  status.className="form-status error";
-  status.textContent="سيُفعَّل الطلب فور تأكيد السعر وربط نظام استقبال الطلبات. لم يتم إرسال أي بيانات.";
+
+(function initPixel() {
+  if (!CONFIG.SNAP_PIXEL_ID) return;
+  try {
+    (function(e,t,n){if(e.snaptr)return;const a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];const r=t.createElement("script");r.async=true;r.src=n;const s=t.getElementsByTagName("script")[0];s.parentNode.insertBefore(r,s)})(window,document,"https://sc-static.net/scevent.min.js");
+    window.snaptr("init", CONFIG.SNAP_PIXEL_ID);
+    window.snaptr("track", "PAGE_VIEW", { item_category: "dietary_supplement", item_ids: ["GOOGEER-SHILAJIT-100G"] });
+  } catch (_) {}
+})();
+
+const form = document.getElementById("order-form");
+const total = document.getElementById("summary-total");
+const offerSummary = document.getElementById("summary-offer");
+const status = document.getElementById("form-status");
+const submitButton = form?.querySelector('button[type="submit"]');
+const phoneInput = form?.elements.phone;
+const phoneError = document.getElementById("phone-error");
+let checkoutTracked = false;
+
+function currentOffer() {
+  const code = Number(new FormData(form).get("offer") || 1);
+  return { code, ...CONFIG.OFFERS[code] };
 }
-form?.addEventListener("submit",async event=>{event.preventDefault();if(!form.reportValidity())return;const data=Object.fromEntries(new FormData(form).entries());data.product=CONFIG.PRODUCT_NAME;data.weight=CONFIG.PRODUCT_WEIGHT;data.quantity=Number(data.quantity);data.package_price_sar=CONFIG.OFFERS[data.quantity]||null;data.unit_price_sar=data.package_price_sar?Math.round((data.package_price_sar/data.quantity)*100)/100:null;data.total_sar=data.package_price_sar;data.currency="SAR";data.payment_method="COD";data.page_url=location.href;data.submitted_at=new Date().toISOString();if(!CONFIG.ORDER_ENDPOINT || !Number.isFinite(CONFIG.PRODUCT_PRICE_SAR) || CONFIG.PRODUCT_PRICE_SAR<=0){status.className="form-status error";status.textContent="نعتذر، الطلب الإلكتروني غير متاح مؤقتًا. لم يتم تسجيل طلبك؛ يرجى المحاولة لاحقًا.";return;}const button=form.querySelector("button[type=submit]");button.disabled=true;button.textContent="جارٍ إرسال الطلب…";status.className="form-status";status.textContent="جارٍ إرسال بيانات الطلب…";try{const response=await fetch(CONFIG.ORDER_ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data),redirect:"follow"});if(!response.ok)throw new Error("Request failed");let result={};try{result=await response.json()}catch(_){}if(result.success!==true)throw new Error("Order not explicitly confirmed by endpoint");status.className="form-status success";status.textContent="تم استلام طلبك بنجاح. سيتواصل معك الفريق لتأكيد تفاصيل التوصيل.";try{if(typeof window.snaptr==="function" && Number(data.total_sar)>0)window.snaptr("track","PURCHASE",{price:data.total_sar,currency:"SAR",item_ids:["GOOGEER-SHILAJIT-100G"]});}catch(_){}form.reset();updateTotals();}catch(_){status.className="form-status error";status.textContent="تعذر إرسال الطلب الآن. لم يتم تسجيل الطلب؛ حاول مرة أخرى لاحقًا."; }finally{button.disabled=false;button.innerHTML="إرسال طلب الدفع عند الاستلام <span>←</span>";}});
-document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener("click",event=>{const target=document.getElementById(link.getAttribute("href").slice(1));if(!target)return;event.preventDefault();target.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}));
+function updateSummary() {
+  const offer = currentOffer();
+  if (offerSummary) offerSummary.textContent = offer.label;
+  if (total) total.textContent = offer.price + " ريال";
+}
+function normalizeSaudiPhone(value) {
+  let phone = String(value || "").trim()
+    .replace(/[٠-٩]/g, d => String("٠١٢٣٤٥٦٧٨٩".indexOf(d)))
+    .replace(/[۰-۹]/g, d => String("۰۱۲۳۴۵۶۷۸۹".indexOf(d)))
+    .replace(/[\s()\-\u200e\u200f\u061c]/g, "");
+  if (phone.startsWith("+966")) phone = "0" + phone.slice(4);
+  else if (phone.startsWith("00966")) phone = "0" + phone.slice(5);
+  else if (phone.startsWith("966")) phone = "0" + phone.slice(3);
+  else if (/^5\d{8}$/.test(phone)) phone = "0" + phone;
+  return /^05\d{8}$/.test(phone) ? phone : null;
+}
+function trackCheckout() {
+  if (checkoutTracked || typeof window.snaptr !== "function") return;
+  const offer = currentOffer();
+  checkoutTracked = true;
+  try { window.snaptr("track", "START_CHECKOUT", { price: offer.price, currency: "SAR", item_ids: ["GOOGEER-SHILAJIT-100G"], item_category: "dietary_supplement", number_items: offer.code }); } catch (_) {}
+}
+form?.addEventListener("change", () => { updateSummary(); trackCheckout(); });
+form?.addEventListener("focusin", trackCheckout, { once: true });
+phoneInput?.addEventListener("input", () => {
+  phoneInput.removeAttribute("aria-invalid");
+  if (phoneError) phoneError.textContent = "";
+  if (status) { status.textContent = ""; status.className = "form-status"; }
+});
+updateSummary();
+
+const checkoutReady = Boolean(CONFIG.ORDER_ENDPOINT);
+if (!checkoutReady && submitButton && status) {
+  submitButton.disabled = true;
+  submitButton.textContent = "الطلب غير متاح مؤقتًا";
+  status.className = "form-status error";
+  status.textContent = "نموذج الطلب جاهز، لكن استقبال الطلبات يحتاج ربط نظام الطلبات الخاص بهذا المنتج.";
+}
+
+form?.addEventListener("submit", async event => {
+  event.preventDefault();
+  if (!form || !status || !submitButton) return;
+  status.textContent = "";
+  if (phoneError) phoneError.textContent = "";
+  const name = String(form.elements.name.value || "").trim();
+  const city = String(form.elements.city.value || "").trim();
+  const phone = normalizeSaudiPhone(form.elements.phone.value);
+  if (name.length < 2) {
+    status.textContent = "يرجى كتابة الاسم.";
+    form.elements.name.focus();
+    return;
+  }
+  if (!phone) {
+    if (phoneError) phoneError.textContent = "أدخل رقم جوال سعودي صحيحًا من 10 أرقام، مثل 05xxxxxxxx.";
+    form.elements.phone.setAttribute("aria-invalid", "true");
+    form.elements.phone.focus();
+    return;
+  }
+  if (city.length < 2) {
+    status.textContent = "يرجى كتابة المدينة.";
+    form.elements.city.focus();
+    return;
+  }
+  const offer = currentOffer();
+  if (!CONFIG.ORDER_ENDPOINT) {
+    status.className = "form-status error";
+    status.textContent = "لم يُسجَّل الطلب؛ نظام استقبال طلبات هذا المنتج غير مربوط بعد.";
+    return;
+  }
+  const payload = {
+    product: CONFIG.PRODUCT_NAME,
+    weight: CONFIG.PRODUCT_WEIGHT,
+    name, phone, city,
+    offer_code: offer.code,
+    offer: offer.label,
+    quantity: offer.code,
+    total_sar: offer.price,
+    currency: "SAR",
+    payment_method: "COD",
+    page_url: window.location.href,
+    submitted_at: new Date().toISOString(),
+    utm: Object.fromEntries(new URLSearchParams(window.location.search))
+  };
+  submitButton.disabled = true;
+  submitButton.textContent = "جارٍ إرسال الطلب…";
+  try {
+    const response = await fetch(CONFIG.ORDER_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    });
+    if (!response.ok) throw new Error("request_failed");
+    const result = await response.json();
+    if (result.success !== true) throw new Error("not_confirmed");
+    status.className = "form-status success";
+    status.textContent = "تم استلام طلبك بنجاح. سنتواصل معك لتأكيد التوصيل.";
+    try {
+      if (typeof window.snaptr === "function") window.snaptr("track", "PURCHASE", { price: offer.price, currency: "SAR", transaction_id: result.transactionId || undefined, item_ids: ["GOOGEER-SHILAJIT-100G"], item_category: "dietary_supplement", number_items: offer.code });
+    } catch (_) {}
+    form.reset();
+    updateSummary();
+  } catch (_) {
+    status.className = "form-status error";
+    status.textContent = "تعذر تأكيد استلام الطلب. لم نؤكد تسجيله؛ حاول مرة أخرى لاحقًا.";
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "تأكيد الطلب — الدفع عند الاستلام ←";
+  }
+});
+
+document.querySelectorAll('a[href="#checkout"]').forEach(link => link.addEventListener("click", event => {
+  const target = document.getElementById("checkout");
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+}));
