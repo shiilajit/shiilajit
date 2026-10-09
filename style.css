@@ -150,3 +150,7 @@ body{font-size:15px;line-height:1.75;overflow-x:hidden}
 .ingredient-list>div>span{flex:0 0 34px}
 .ingredient-list>div p{min-width:0}
 @media(max-width:760px){.fulvic-panel{padding:18px 16px;margin-top:17px}.fulvic-panel h3{font-size:17px}.fulvic-panel>p{font-size:11px}.fulvic-caveat{font-size:10px}}
+
+/* Checkout safety: clearly indicate when order submission is not configured */
+.submit-btn:disabled{opacity:.58;cursor:not-allowed;filter:saturate(.55)}
+.form-status.error{color:#9b3f32}
