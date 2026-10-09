@@ -108,5 +108,10 @@
     <p class="purchase-note">الدفع عند الاستلام بعد تأكيد الطلب</p>
   </section>
 </main>
+
+<script>
+document.querySelectorAll('input[name="offer"]').forEach(input=>input.addEventListener('change',()=>{const quantity=document.getElementById('quantity');if(quantity)quantity.value=input.value;quantity?.dispatchEvent(new Event('change',{bubbles:true}));}));
+document.getElementById('quantity')?.addEventListener('change',event=>{const selected=document.querySelector('input[name="offer"][value="'+event.target.value+'"]');if(selected)selected.checked=true;});
+</script>
 </body>
 </html>
