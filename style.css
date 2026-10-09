@@ -136,3 +136,17 @@ body{font-size:15px;line-height:1.75;overflow-x:hidden}
  .full-field{grid-column:auto}
  .gallery-card img{height:155px}.gallery-main img{height:215px}
 }
+
+
+/* Ingredient transparency and fulvic-acid panel */
+.fulvic-panel{margin-top:22px;padding:23px 24px;background:#f2efe5;border:1px solid #e2dac8;border-right:3px solid var(--gold);border-radius:4px}
+.fulvic-panel-top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#81724e;font:700 9px var(--latin);letter-spacing:1.1px}
+.fulvic-panel-top span:last-child{font:500 10px var(--arabic);letter-spacing:0;color:#77786d}
+.fulvic-panel h3{font-size:20px;line-height:1.5;margin:13px 0 8px;color:#24251e}
+.fulvic-panel>p{font-size:13px;line-height:2;margin:0;color:#5c5d52}
+.fulvic-panel strong{color:#7b6435;white-space:nowrap}
+.fulvic-caveat{margin-top:15px;padding-top:13px;border-top:1px solid #ded6c4;color:#68685e;font-size:11px;line-height:1.95}
+.ingredient-list>div{align-items:flex-start}
+.ingredient-list>div>span{flex:0 0 34px}
+.ingredient-list>div p{min-width:0}
+@media(max-width:760px){.fulvic-panel{padding:18px 16px;margin-top:17px}.fulvic-panel h3{font-size:17px}.fulvic-panel>p{font-size:11px}.fulvic-caveat{font-size:10px}}
