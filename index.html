@@ -9,6 +9,8 @@
 <meta property="og:title" content="Googeer Himalayan Shilajit">
 <meta property="og:description" content="شيلاجيت الهيمالايا — تجربة راقية تبدأ باختيار واعٍ.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://shiilajit.github.io/shiilajit/01.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -96,7 +98,7 @@
    <div class="form-grid">
     <label>الاسم الكامل *<input name="name" autocomplete="name" required minlength="2" placeholder="الاسم كما يستلمه المندوب"></label>
     <label>رقم الجوال السعودي *<input name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="(\+?966|0)?5[0-9]{8}" placeholder="05XXXXXXXX"></label>
-    <label>المدينة *<select name="city" required><option value="">اختر المدينة</option><option>الرياض</option><option>جدة</option><option>مكة المكرمة</option><option>المدينة المنورة</option><option>الدمام</option><option>الخبر</option><option>الظهران</option><option>الطائف</option><option>تبوك</option><option>أبها</option><option>جازان</option><option>بريدة</option><option>حائل</option><option>ينبع</option><option>الأحساء</option><option>مدينة أخرى</option></select></label>
+    <label>المدينة *<input name="city" required autocomplete="address-level2" placeholder="اكتب اسم المدينة"></label>
     <label>الحي / المنطقة *<input name="district" required autocomplete="address-level3" placeholder="اسم الحي"></label>
     <label class="full-field">العنوان الوطني أو وصف العنوان *<input name="address" required autocomplete="street-address" placeholder="الشارع، رقم المبنى، أقرب علامة"></label>
     <label>عدد العبوات *<select name="quantity" id="quantity"><option value="1">عبوة واحدة</option><option value="2">عبوتان</option><option value="3">3 عبوات</option></select></label>
