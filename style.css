@@ -502,3 +502,21 @@ main{width:100%;max-width:none;overflow:visible}
  .checkout .offer-card{min-height:76px}
  .checkout .order-summary .summary-total-row strong{font-size:21px}
 }
+
+
+/* Compact checkout summary and delivery guidance */
+.checkout .checkout-title{padding:20px 3px 10px}
+.checkout .checkout-subtitle{margin:5px 0 0;color:#a99d89;font-size:12px;line-height:1.8}
+.checkout .order-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:15px 0 12px!important;padding:12px 14px!important}
+.checkout .order-summary .summary-offer{display:block;min-width:0;color:#d9cbb5;font-size:12px;line-height:1.6}
+.checkout .order-summary .summary-total-row{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-shrink:0;padding:0;border:0}
+.checkout .order-summary .summary-total-row span{color:#a99d89;font-size:11px;white-space:nowrap}
+.checkout .order-summary .summary-total-row strong{color:#f2d18d;font-size:20px;line-height:1.2;white-space:nowrap}
+@media(max-width:430px){
+ .checkout .checkout-title{padding-top:17px}
+ .checkout .checkout-subtitle{font-size:11px}
+ .checkout .order-summary{gap:8px;padding:11px!important}
+ .checkout .order-summary .summary-offer{font-size:11px}
+ .checkout .order-summary .summary-total-row{gap:6px}
+ .checkout .order-summary .summary-total-row strong{font-size:18px}
+}
