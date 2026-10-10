@@ -214,21 +214,3 @@ form?.addEventListener("submit", async event => {
   }
 });
 
-document.querySelectorAll('a[href="#checkout"]').forEach(link => {
-  link.addEventListener("click", event => {
-    const target = document.getElementById("checkout");
-    if (!target) return;
-
-    event.preventDefault();
-
-    // Navigate to checkout immediately on the first click.
-    document.documentElement.style.scrollBehavior = "auto";
-    document.body.style.scrollBehavior = "auto";
-    target.scrollIntoView({ behavior: "auto", block: "start" });
-
-    // Keep the URL's checkout anchor in sync without triggering another scroll.
-    if (window.location.hash !== "#checkout") {
-      window.history.replaceState(null, "", "#checkout");
-    }
-  });
-});
