@@ -11,7 +11,7 @@
 <meta property="og:image" content="https://shiilajit.github.io/shiilajit/Googeer%20Shilajit_%20Himalayan%20Gold-2.png">
 <link rel="preload" as="image" href="Googeer%20Shilajit_%20Himalayan%20Gold-2.png" fetchpriority="high">
 <link rel="preconnect" href="https://sc-static.net" crossorigin>
-<link rel="stylesheet" href="style.css?v=20261010-original-art-v2">
+<link rel="stylesheet" href="style.css?v=20261010-xcore-checkout-v1">
 <script src="script.js?v=20261010-image-order-v3" defer></script>
 </head>
 <body>
@@ -69,19 +69,47 @@
 </section>
 <section class="flow-cta flow-cta--dark"><a href="#checkout" class="flow-cta__button"><span><strong>قارن الباقات واختر الأنسب</strong><small>راجع السعر الإجمالي قبل المتابعة</small></span><b>←</b></a></section>
 <section class="offer-intro"><p class="eyebrow"><span></span> YOUR GOOGEER SELECTION</p><h2>الكمية التي تناسبك.<br><em>والسعر واضح من البداية.</em></h2><p>اختر باقة واحدة، أو اثنتين، أو ثلاث عبوات. سيظهر إجمالي اختيارك قبل المتابعة.</p></section>
-<section class="checkout-section" id="checkout">
-<div class="checkout-intro"><div class="checkout-intro-top"><span>THE COLLECTION</span><span>03 OPTIONS</span></div><div class="checkout-monogram">G<span>✳</span></div><p class="eyebrow"><span></span> CHOOSE YOUR SET</p><h2>اختر باقتك.<br><em>بكل وضوح.</em></h2><p>كل عبوة تحتوي على 100 غرام. اختر الكمية التي تناسبك وراجع الإجمالي قبل المتابعة.</p><div class="checkout-facts"><div><b>100 g</b><span>وزن العبوة</span></div><div><b>3</b><span>خيارات للكمية</span></div></div></div>
-<form id="order-form" class="checkout-card" novalidate>
-<div class="checkout-card-head"><span>01 — SELECT YOUR OFFER</span><span>GOOGEER®</span></div>
-<fieldset class="offers"><legend>اختر الباقة المناسبة لك</legend>
-<label class="offer-card"><input type="radio" name="offer" value="1" checked><span class="offer-check"></span><span class="offer-main"><b>الباقة الأساسية</b><small>عبوة واحدة · 100 غرام</small></span><span class="offer-price"><strong>198</strong><small>ر.س</small></span></label>
-<label class="offer-card"><span class="offer-badge">وفر 108 ر.س</span><input type="radio" name="offer" value="2"><span class="offer-check"></span><span class="offer-main"><b>باقة التوفير</b><small>عبوتان · 200 غرام إجمالًا</small><em>144 ر.س للعبوة</em></span><span class="offer-price"><strong>288</strong><small>ر.س</small></span></label>
-<label class="offer-card offer-card--featured"><span class="offer-badge">وفر 270 ر.س</span><input type="radio" name="offer" value="3"><span class="offer-check"></span><span class="offer-main"><b>الباقة الثلاثية</b><small>3 عبوات · 300 غرام إجمالًا</small><em>108 ر.س للعبوة</em></span><span class="offer-price"><strong>324</strong><small>ر.س</small></span></label>
+<section class="checkout" id="checkout">
+<form id="order-form" novalidate>
+<fieldset class="offers">
+<legend class="sr-only">اختر الباقة</legend>
+<label class="offer-card">
+<input type="radio" name="offer" value="1" checked>
+<span class="offer-selector"></span>
+<span class="offer-main"><b>الباقة الأساسية</b><small>عبوة واحدة · 100 غرام</small></span>
+<span class="offer-price"><span class="offer-current"><strong>198</strong><small>ر.س</small></span></span>
+</label>
+<label class="offer-card">
+<span class="badge">وفر 108 ر.س</span>
+<input type="radio" name="offer" value="2">
+<span class="offer-selector"></span>
+<span class="offer-main"><b>باقة التوفير</b><small>عبوتان · 200 غرام إجمالًا</small><em>144 ر.س للعبوة</em></span>
+<span class="offer-price"><span class="offer-current"><strong>288</strong><small>ر.س</small></span></span>
+</label>
+<label class="offer-card featured">
+<span class="badge">الأكثر توفيرًا</span>
+<input type="radio" name="offer" value="3">
+<span class="offer-selector"></span>
+<span class="offer-main"><b>الباقة الثلاثية</b><small>3 عبوات · 300 غرام إجمالًا</small><em>108 ر.س للعبوة</em></span>
+<span class="offer-price"><span class="offer-current"><strong>324</strong><small>ر.س</small></span></span>
+</label>
 </fieldset>
-<div class="checkout-title"><span>02 — CONTACT DETAILS</span><h3>أين يمكننا التواصل معك؟</h3><p>أدخل بياناتك بدقة لمتابعة الطلب عند تفعيل استقبال الطلبات.</p></div>
-<div class="fields fields-simple"><label><span>الاسم الكامل</span><input name="name" autocomplete="name" required minlength="2" placeholder="اكتب اسمك هنا"></label><label class="phone-field"><span>رقم الجوال السعودي</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="05xxxxxxxx" aria-describedby="phone-error"><small id="phone-error" class="phone-error" role="alert" aria-live="polite"></small></label></div>
-<div class="order-summary"><div><span>الباقة المختارة</span><strong id="summary-offer">عبوة واحدة · 100 غرام</strong></div><div><span>إجمالي السعر</span><strong id="summary-total">198 ريال</strong></div><div><span>طريقة الدفع</span><strong>عند الاستلام</strong></div></div>
-<button class="submit-btn" type="submit">متابعة الطلب <span>←</span></button><p class="checkout-note">تأكد من صحة بيانات التواصل قبل المتابعة.</p><p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+<div class="checkout-title">
+<h3>بيانات التوصيل</h3>
+<p>أدخل اسمك ورقم جوالك السعودي لمتابعة الطلب.</p>
+</div>
+<div class="fields">
+<label><span>الاسم الكامل</span><input name="name" autocomplete="name" required minlength="2" placeholder="اكتب اسمك هنا"></label>
+<label class="phone-field"><span>رقم الجوال السعودي</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="05xxxxxxxx" aria-describedby="phone-error"><small id="phone-error" class="phone-error" role="alert" aria-live="polite"></small></label>
+</div>
+<div class="order-summary">
+<div><span>الباقة المختارة</span><strong id="summary-offer">عبوة واحدة · 100 غرام</strong></div>
+<div><span>إجمالي السعر</span><strong id="summary-total">198 ريال</strong></div>
+<div><span>طريقة الدفع</span><strong>عند الاستلام</strong></div>
+</div>
+<button class="submit-btn" type="submit">متابعة الطلب ←</button>
+<p class="microcopy">راجع بياناتك والإجمالي قبل متابعة الطلب.</p>
+<p id="form-status" class="form-status form-message" role="status" aria-live="polite"></p>
 </form>
 </section>
 
