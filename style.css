@@ -667,3 +667,14 @@ main{width:100%;max-width:none;overflow:visible}
 
 /* Make checkout anchor buttons jump on the first click without smooth-scroll delay. */
 html{scroll-behavior:auto!important}
+
+
+/* Match XCORE FIT checkout navigation and prevent the floating CTA covering the form. */
+.mobile-cta{
+  transition:transform .25s ease,opacity .25s ease;
+}
+.mobile-cta.is-hidden{
+  transform:translateY(130%);
+  opacity:0;
+  pointer-events:none;
+}
