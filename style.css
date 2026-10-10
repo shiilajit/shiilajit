@@ -678,3 +678,64 @@ html{scroll-behavior:auto!important}
   opacity:0;
   pointer-events:none;
 }
+
+/* Premium trust-and-offer announcement bar */
+.announcement{
+  min-height:38px;
+  height:auto;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  align-content:center;
+  gap:7px clamp(10px,1.2vw,18px);
+  padding:8px 14px;
+  font-size:9px;
+  line-height:1.65;
+  letter-spacing:0;
+  text-align:center;
+}
+.announcement-item{
+  display:inline-flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:5px;
+  white-space:nowrap;
+}
+.announcement-item b{
+  font-weight:900;
+}
+.announcement-item span{
+  font-weight:600;
+}
+.announcement i{
+  display:block;
+  flex:0 0 3px;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#90602e;
+}
+@media(max-width:700px){
+  .announcement{
+    gap:6px 10px;
+    padding:9px 9px;
+    font-size:8px;
+    line-height:1.6;
+  }
+  .announcement .announcement-item{
+    flex:1 1 44%;
+    min-width:130px;
+    max-width:100%;
+    white-space:normal;
+    flex-direction:column;
+    align-items:center;
+    gap:1px;
+  }
+  .announcement i{display:none}
+}
+@media(max-width:360px){
+  .announcement{gap:6px 5px;font-size:7px;padding:8px 5px}
+  .announcement .announcement-item{min-width:calc(50% - 5px);flex-basis:calc(50% - 5px)}
+}
+
