@@ -214,3 +214,46 @@ form?.addEventListener("submit", async event => {
   }
 });
 
+/* Reliable CTA-to-checkout navigation, adapted from XCORE FIT.
+   Re-check the anchor after layout settles so the first tap lands at the
+   top of the complete order area, even in Snapchat's in-app browser. */
+function scrollToCheckoutStart() {
+  const target = document.getElementById("checkout");
+  if (!target) return;
+  const top = Math.max(0, window.pageYOffset + target.getBoundingClientRect().top - 8);
+  window.scrollTo({ top, left: 0, behavior: "auto" });
+}
+document.addEventListener("click", event => {
+  const link = event.target.closest('a[href="#checkout"]');
+  if (!link) return;
+  const target = document.getElementById("checkout");
+  if (!target) return;
+  event.preventDefault();
+  if (window.location.hash !== "#checkout") {
+    window.history.replaceState(null, "", "#checkout");
+  }
+  scrollToCheckoutStart();
+  requestAnimationFrame(() => requestAnimationFrame(scrollToCheckoutStart));
+  setTimeout(scrollToCheckoutStart, 180);
+  setTimeout(scrollToCheckoutStart, 480);
+}, { capture: true });
+
+/* Keep the fixed mobile CTA from covering the order form, as on XCORE FIT. */
+const checkoutSection = document.getElementById("checkout");
+const mobileCta = document.querySelector(".mobile-cta");
+if (mobileCta && checkoutSection) {
+  const updateMobileCtaVisibility = () => {
+    const rect = checkoutSection.getBoundingClientRect();
+    const viewport = window.visualViewport?.height || window.innerHeight;
+    const checkoutIsActive = rect.top <= viewport * 0.92 && rect.bottom >= 80;
+    mobileCta.classList.toggle("is-hidden", checkoutIsActive);
+  };
+  window.addEventListener("scroll", updateMobileCtaVisibility, { passive: true });
+  window.addEventListener("resize", updateMobileCtaVisibility);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", updateMobileCtaVisibility);
+    window.visualViewport.addEventListener("scroll", updateMobileCtaVisibility, { passive: true });
+  }
+  updateMobileCtaVisibility();
+}
+
