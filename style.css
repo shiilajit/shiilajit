@@ -249,3 +249,67 @@ main{max-width:1100px;overflow:hidden;background:#17100b}
  .offer-price strong{font-size:22px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+
+/* Unified full-bleed image treatment — matching the hero frame */
+.artwork,
+.artwork-main{
+  position:relative;
+  padding:0;
+  overflow:hidden;
+  background:#21160e;
+  border-top:1px solid #d5ae6d66;
+  border-bottom:1px solid #d5ae6d66;
+}
+.artwork img,
+.artwork-main img{
+  display:block;
+  width:100%;
+  max-width:none;
+  height:auto;
+  aspect-ratio:1/1;
+  margin:0;
+  object-fit:cover;
+  background:#21160e;
+  box-shadow:none;
+}
+.artwork:after,
+.artwork-main:after{
+  content:"";
+  position:absolute;
+  z-index:1;
+  inset:12px;
+  border:1px solid #d5ae6d66;
+  pointer-events:none;
+}
+.artwork .image-caption,
+.artwork-main .image-caption{
+  position:absolute;
+  z-index:2;
+  right:0;
+  bottom:0;
+  left:0;
+  max-width:none;
+  margin:0;
+  padding:28px 24px 15px;
+  color:#fff2dc;
+  font-size:9px;
+  letter-spacing:.1em;
+  background:linear-gradient(0deg,#17100be8 0%,#17100b80 55%,transparent 100%);
+  text-align:right;
+}
+.artwork .visual-note{
+  position:relative;
+  max-width:none;
+  margin:0;
+  padding:12px 20px;
+  color:#d9c5a6;
+  background:#21160e;
+  font-size:10px;
+  line-height:1.9;
+  text-align:center;
+}
+@media(max-width:720px){
+  .artwork:after,.artwork-main:after{inset:8px}
+  .artwork .image-caption,.artwork-main .image-caption{padding:24px 16px 12px;font-size:8px}
+}
