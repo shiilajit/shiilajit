@@ -474,3 +474,31 @@ main{width:100%;max-width:none;overflow:visible}
   .checkout .offer-main small{font-size:10px}
   .checkout .offer-price strong{font-size:24px!important}
 }
+
+
+/* Refined checkout: calmer hierarchy, less copy, clearer order total */
+.checkout-heading{text-align:center;max-width:560px;margin:0 auto 24px;padding:0 12px}
+.checkout-eyebrow{display:block;margin-bottom:9px;color:#d8ad5d;font-size:10px;font-weight:800;letter-spacing:.22em}
+.checkout-heading h2{margin:0;color:#f7e8c9;font-size:clamp(23px,4vw,32px);font-weight:800;line-height:1.5;letter-spacing:-.03em}
+.checkout-heading p{margin:5px 0 0;color:#a99d89;font-size:12px;line-height:1.7}
+.checkout .checkout-title{padding:23px 3px 10px}
+.checkout .checkout-title h3{font-size:16px;font-weight:700}
+.checkout .offer-main small{margin-top:2px}
+.checkout .offer-card{min-height:84px}
+.checkout .order-summary{
+  margin:20px 0 13px!important;padding:13px 15px!important;
+  border:1px solid rgba(216,173,93,.22)!important;border-radius:14px!important;
+  background:rgba(8,7,5,.72)!important;
+}
+.checkout .order-summary .summary-label{display:block;padding:0 0 8px;color:#9f927e;font-size:11px;border-bottom:1px solid rgba(255,255,255,.07)}
+.checkout .order-summary .summary-total-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0 1px;border:0;font-size:13px}
+.checkout .order-summary .summary-total-row span{color:#e7dcc8;font-size:12px}
+.checkout .order-summary .summary-total-row strong{color:#f2d18d;font-size:23px;line-height:1.3;white-space:nowrap}
+.checkout .submit-btn{display:flex;align-items:center;justify-content:center;gap:12px;font-size:16px}
+.checkout .microcopy{margin-top:9px;font-size:11px;color:#a99d89}
+@media(max-width:430px){
+ .checkout-heading{margin-bottom:18px}
+ .checkout-heading h2{font-size:24px}
+ .checkout .offer-card{min-height:76px}
+ .checkout .order-summary .summary-total-row strong{font-size:21px}
+}
