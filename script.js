@@ -52,7 +52,7 @@ function currentOffer() {
 
 function updateSummary() {
   const offer = currentOffer();
-  if (offerSummary) offerSummary.textContent = offer.label;
+  if (offerSummary) offerSummary.textContent = offer.code === 1 ? "عبوة واحدة · 100 غرام · تكفيك شهرين" : offer.label;
   if (total) total.textContent = offer.price + " ريال";
 }
 
