@@ -739,3 +739,165 @@ html{scroll-behavior:auto!important}
   .announcement .announcement-item{min-width:calc(50% - 5px);flex-basis:calc(50% - 5px)}
 }
 
+/* GOOGEER luxury masthead — structured offer and trust bar */
+.announcement{
+  position:relative;
+  display:block;
+  min-height:0;
+  padding:0 clamp(14px,3vw,38px);
+  overflow:hidden;
+  color:#f5ead6;
+  background:
+    radial-gradient(ellipse at 50% -70%,rgba(183,139,69,.15),transparent 62%),
+    linear-gradient(180deg,#17110b 0%,#100c08 100%);
+  border-top:1px solid rgba(218,182,117,.48);
+  border-bottom:1px solid rgba(218,182,117,.2);
+  font-size:inherit;
+  font-weight:400;
+  letter-spacing:normal;
+  text-align:inherit;
+}
+.announcement-inner{
+  width:100%;
+  max-width:1420px;
+  margin:0 auto;
+}
+.announcement-topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:38px;
+  padding:5px 2px 7px;
+  border-bottom:1px solid rgba(218,182,117,.14);
+}
+.announcement-brandline{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+}
+.announcement-monogram{
+  display:grid;
+  place-items:center;
+  width:22px;
+  height:22px;
+  flex:0 0 22px;
+  border:1px solid rgba(218,182,117,.58);
+  border-radius:50%;
+  color:#e4c58b;
+  font:italic 15px Georgia,serif;
+}
+.announcement-brandname{
+  color:#f7ead5;
+  font:700 10px/1.2 Georgia,serif;
+  letter-spacing:.19em;
+  white-space:nowrap;
+}
+.announcement-branddivider{
+  width:1px;
+  height:13px;
+  background:rgba(218,182,117,.42);
+}
+.announcement-edition{
+  color:#a99270;
+  font:500 8px/1.4 Arial,sans-serif;
+  letter-spacing:.16em;
+  white-space:nowrap;
+}
+.announcement-note{
+  margin:0;
+  color:#d7b77b;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.5;
+}
+.announcement-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  align-items:stretch;
+}
+.announcement-item{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-width:0;
+  min-height:70px;
+  padding:11px clamp(8px,1.3vw,19px);
+  white-space:normal;
+}
+.announcement-item + .announcement-item{
+  border-inline-start:1px solid rgba(218,182,117,.16);
+}
+.announcement-icon{
+  display:block;
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  padding:6px;
+  color:#d7b477;
+  border:1px solid rgba(215,180,119,.32);
+  border-radius:50%;
+  background:rgba(215,180,119,.045);
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.35;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.announcement-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  min-width:0;
+  text-align:right;
+}
+.announcement-copy b{
+  display:block;
+  color:#f2dfbd;
+  font-size:11px;
+  font-weight:800;
+  line-height:1.45;
+}
+.announcement-copy small{
+  display:block;
+  color:#b9a88e;
+  font-size:9px;
+  font-weight:500;
+  line-height:1.6;
+}
+@media(max-width:1000px){
+  .announcement{padding-inline:18px}
+  .announcement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .announcement-item{justify-content:flex-start;padding:11px 15px;min-height:64px}
+  .announcement-item:nth-child(3){border-inline-start:0}
+  .announcement-item:nth-child(n+3){border-top:1px solid rgba(218,182,117,.13)}
+}
+@media(max-width:600px){
+  .announcement{padding:0 12px}
+  .announcement-topline{min-height:34px;padding:5px 0}
+  .announcement-monogram{width:20px;height:20px;flex-basis:20px;font-size:14px}
+  .announcement-brandname{font-size:9px;letter-spacing:.15em}
+  .announcement-edition{font-size:7px;letter-spacing:.1em}
+  .announcement-note{font-size:9px;white-space:nowrap}
+  .announcement-grid{gap:0}
+  .announcement-item{gap:8px;min-height:63px;padding:9px 7px}
+  .announcement-icon{width:27px;height:27px;flex-basis:27px;padding:5px}
+  .announcement-copy{gap:3px}
+  .announcement-copy b{font-size:10px}
+  .announcement-copy small{font-size:8px;line-height:1.45}
+}
+@media(max-width:360px){
+  .announcement{padding:0 8px}
+  .announcement-topline{gap:6px}
+  .announcement-brandline{gap:6px}
+  .announcement-edition{font-size:6px;letter-spacing:.06em}
+  .announcement-note{font-size:8px}
+  .announcement-item{gap:6px;padding-inline:4px}
+  .announcement-icon{width:24px;height:24px;flex-basis:24px;padding:4px}
+  .announcement-copy b{font-size:9px}
+  .announcement-copy small{font-size:7px}
+}
+
