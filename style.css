@@ -49,3 +49,34 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 .editorial-card-small{min-height:0}
 .editorial-card-small img{height:100%;min-height:0;aspect-ratio:4/5}
 @media(max-width:680px){.editorial-grid{grid-template-columns:1fr;grid-template-rows:auto}.editorial-card-main{min-height:0}.editorial-card-main img,.editorial-card-small img{aspect-ratio:4/5;min-height:0}.editorial-card-small img{height:auto}}
+
+
+/* Premium ingredient and benefits sections */
+.ingredients-section{padding:clamp(58px,8vw,105px) clamp(22px,8vw,120px);background:radial-gradient(ellipse at 80% 0%,#382617 0,#1d140d 46%,#100c08 100%);color:var(--ivory)}
+.premium-section-head{max-width:760px;margin:0 auto 34px;text-align:center}
+.premium-section-head .eyebrow,.benefits-heading .eyebrow{justify-content:center}
+.premium-section-head h2,.benefits-heading h2{margin:0;font-size:clamp(34px,5vw,60px);font-weight:500;line-height:1.35;letter-spacing:-.055em}
+.premium-section-head h2 em,.benefits-heading h2 em{color:var(--olive-light);font-family:var(--serif);font-weight:400}
+.premium-section-head>p:last-child{max-width:680px;margin:14px auto 0;color:#c1b29d;font-size:12px;line-height:2}
+.ingredients-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ingredient-card{position:relative;min-width:0;min-height:225px;padding:24px 22px 20px;border:1px solid #c89a4b40;background:linear-gradient(145deg,#2a1d12c9,#17100b 80%);overflow:hidden}
+.ingredient-card:after{content:"";position:absolute;right:-30px;bottom:-54px;width:125px;height:125px;border:1px solid #d9b66a18;border-radius:50%;box-shadow:0 0 0 14px #d9b66a08,0 0 0 30px #d9b66a05;pointer-events:none}
+.ingredient-number{position:absolute;top:17px;left:18px;color:#bda16e;font:italic 13px var(--serif)}
+.ingredient-symbol{display:grid;place-items:center;width:40px;height:40px;margin-bottom:18px;border:1px solid #c89a4b66;border-radius:50%;color:var(--olive-light);font-size:20px}
+.ingredient-card h3{margin:0 0 8px;color:#f5ecdc;font-size:17px;font-weight:600}
+.ingredient-card p{position:relative;z-index:1;margin:0;color:#c0b19b;font-size:11px;line-height:2}
+.ingredient-card small{display:block;margin-top:18px;color:#a88149;font-size:8px;letter-spacing:.17em}
+.benefits-section{display:grid;grid-template-columns:.78fr 1.22fr;gap:clamp(30px,7vw,100px);padding:clamp(60px,8vw,110px) clamp(22px,8vw,120px);background:var(--ivory);color:var(--night)}
+.benefits-heading{align-self:start;position:sticky;top:24px}
+.benefits-heading .eyebrow{color:#8a642e;justify-content:flex-start}
+.benefits-heading h2{font-size:clamp(35px,4.8vw,58px)}
+.benefits-heading h2 em{color:#91632c}
+.benefits-heading>p:last-child{max-width:370px;margin:17px 0 0;color:#5e5a4f;font-size:12px;line-height:2.15}
+.benefits-list{border-top:1px solid #c9bda9}
+.benefit-item{display:grid;grid-template-columns:35px 1fr 18px;gap:14px;align-items:start;padding:21px 0;border-bottom:1px solid #c9bda9}
+.benefit-item>span{padding-top:2px;color:#a47738;font:italic 16px var(--serif)}
+.benefit-item h3{margin:0 0 5px;color:#21180f;font-size:16px;font-weight:700}
+.benefit-item p{margin:0;color:#5e5a4f;font-size:11px;line-height:2.05}
+.benefit-item i{padding-top:2px;color:#a47738;font-size:17px;font-style:normal}
+@media(max-width:800px){.ingredients-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.benefits-section{grid-template-columns:1fr;gap:27px}.benefits-heading{position:relative;top:auto}.benefits-heading>p:last-child{max-width:650px}}
+@media(max-width:520px){.ingredients-section{padding:48px 17px}.premium-section-head{margin-bottom:24px}.premium-section-head h2,.benefits-heading h2{font-size:34px}.premium-section-head>p:last-child{font-size:11px}.ingredients-grid{grid-template-columns:1fr;gap:9px}.ingredient-card{min-height:0;padding:20px}.ingredient-symbol{width:35px;height:35px;margin-bottom:12px}.ingredient-card h3{font-size:16px}.ingredient-card p{font-size:11px}.ingredient-card small{margin-top:12px}.benefits-section{padding:48px 18px}.benefit-item{grid-template-columns:27px 1fr 15px;gap:10px;padding:17px 0}.benefit-item h3{font-size:14px}.benefit-item p{font-size:10px}}
