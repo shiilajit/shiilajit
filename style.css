@@ -547,3 +547,52 @@ main{width:100%;max-width:none;overflow:visible}
   .checkout .order-summary{padding:11px 12px!important}
   .checkout .order-summary div{gap:12px;padding:7px 0}
 }
+
+
+/* Horizontal compact order summary: three side-by-side details */
+.checkout .order-summary{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr) minmax(0,1fr)!important;
+  align-items:stretch;
+  gap:0!important;
+  margin:12px 0 10px!important;
+  padding:12px 8px!important;
+}
+.checkout .order-summary div{
+  display:flex!important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px!important;
+  min-width:0;
+  padding:2px 7px!important;
+  text-align:center;
+}
+.checkout .order-summary div+div{
+  border-top:0!important;
+  border-right:1px solid rgba(255,255,255,.09);
+}
+.checkout .order-summary span{
+  display:block;
+  font-size:10px!important;
+  white-space:nowrap;
+}
+.checkout .order-summary strong{
+  display:block;
+  max-width:100%;
+  font-size:11px!important;
+  line-height:1.5;
+  text-align:center!important;
+  overflow-wrap:anywhere;
+}
+.checkout .order-summary #summary-total{
+  font-size:15px!important;
+  white-space:nowrap;
+}
+@media(max-width:430px){
+  .checkout .order-summary{padding:10px 4px!important}
+  .checkout .order-summary div{padding:2px 4px!important;gap:4px!important}
+  .checkout .order-summary span{font-size:9px!important}
+  .checkout .order-summary strong{font-size:10px!important}
+  .checkout .order-summary #summary-total{font-size:13px!important}
+}
