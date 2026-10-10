@@ -314,43 +314,53 @@ main{max-width:1100px;overflow:hidden;background:#17100b}
   .artwork .image-caption,.artwork-main .image-caption{padding:24px 16px 12px;font-size:8px}
 }
 
-/* Images 2–5: preserve each supplied artwork exactly, without the page's image frame or crop. */
-main{overflow:visible}
-.artwork,
-.artwork-main{
-  width:100vw;
-  max-width:none;
-  margin-inline:calc((100% - 100vw)/2);
-  padding:0;
-  overflow:visible;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  background:transparent;
+/* Images 2–5: original artwork, edge-to-edge, responsive, no added frame/caption/crop. */
+html,body{max-width:100%;overflow-x:hidden}
+main{width:100%;max-width:none;overflow:visible}
+.artwork,.artwork-main{
+  display:block!important;
+  position:relative;
+  width:100vw!important;
+  max-width:none!important;
+  margin-left:calc(50% - 50vw)!important;
+  margin-right:calc(50% - 50vw)!important;
+  padding:0!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:#17100b!important;
+  line-height:0;
 }
-.artwork img,
-.artwork-main img{
-  display:block;
-  width:100%;
-  max-width:none;
-  height:auto;
-  aspect-ratio:auto;
-  object-fit:contain;
-  object-position:center;
-  margin:0;
-  padding:0;
-  border:0;
-  border-radius:0;
-  box-shadow:none;
-  background:transparent;
+.artwork img,.artwork-main img{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  object-fit:initial!important;
+  object-position:center!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
 }
-.artwork:after,
-.artwork-main:after,
-.artwork .image-caption,
-.artwork-main .image-caption,
-.artwork .visual-note{
-  display:none !important;
-}
+.artwork:after,.artwork-main:after,
+.artwork .image-caption,.artwork-main .image-caption,
+.artwork .visual-note{display:none!important}
 @media(max-width:720px){
-  .artwork,.artwork-main{width:100vw;margin-inline:calc((100% - 100vw)/2);padding:0}
+  .artwork,.artwork-main{
+    width:100vw!important;
+    margin-left:calc(50% - 50vw)!important;
+    margin-right:calc(50% - 50vw)!important;
+    padding:0!important;
+  }
+  .artwork img,.artwork-main img{
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:auto!important;
+  }
 }
