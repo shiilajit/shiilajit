@@ -313,3 +313,44 @@ main{max-width:1100px;overflow:hidden;background:#17100b}
   .artwork:after,.artwork-main:after{inset:8px}
   .artwork .image-caption,.artwork-main .image-caption{padding:24px 16px 12px;font-size:8px}
 }
+
+/* Images 2–5: preserve each supplied artwork exactly, without the page's image frame or crop. */
+main{overflow:visible}
+.artwork,
+.artwork-main{
+  width:100vw;
+  max-width:none;
+  margin-inline:calc((100% - 100vw)/2);
+  padding:0;
+  overflow:visible;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent;
+}
+.artwork img,
+.artwork-main img{
+  display:block;
+  width:100%;
+  max-width:none;
+  height:auto;
+  aspect-ratio:auto;
+  object-fit:contain;
+  object-position:center;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent;
+}
+.artwork:after,
+.artwork-main:after,
+.artwork .image-caption,
+.artwork-main .image-caption,
+.artwork .visual-note{
+  display:none !important;
+}
+@media(max-width:720px){
+  .artwork,.artwork-main{width:100vw;margin-inline:calc((100% - 100vw)/2);padding:0}
+}
