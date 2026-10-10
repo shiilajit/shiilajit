@@ -40,3 +40,12 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 .offer-intro{background:#19110b}
 .checkout-section{background:#100c08}
 .site-footer{background:#0b0805}
+
+
+/* Three-image-only layout: present each of the three latest supplied images once. */
+.editorial-grid{grid-template-rows:minmax(0,1fr);align-items:stretch}
+.editorial-card-main{grid-row:span 1;min-height:0}
+.editorial-card-main img{min-height:0;aspect-ratio:4/5}
+.editorial-card-small{min-height:0}
+.editorial-card-small img{height:100%;min-height:0;aspect-ratio:4/5}
+@media(max-width:680px){.editorial-grid{grid-template-columns:1fr;grid-template-rows:auto}.editorial-card-main{min-height:0}.editorial-card-main img,.editorial-card-small img{aspect-ratio:4/5;min-height:0}.editorial-card-small img{height:auto}}
